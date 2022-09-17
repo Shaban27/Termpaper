@@ -1,5 +1,6 @@
 public class Main {
 
+
     public static void main(String[] args) {
 
         Employee[] employees = new Employee[10];
@@ -36,14 +37,13 @@ public class Main {
         if (employees == null) {
             System.out.println("Если пусто");
             return;
-        } else {
-            for (int i = 0; i < employees.length; i++) {
-                if (employees[i] != null) {
-                    System.out.println("Сотрудник" + employeeNumber + " - " + employees[i].toString());
-                    summ += employees[i].getSalary();
-                    countOfEmployees++;
-                    employeeNumber++;
-                }
+        }
+            for (int i = 0; i < employees.length; i++) {if (employees[i] != null) {
+                System.out.println("Сотрудник" + employeeNumber + " - " + employees[i].toString());
+                summ += employees[i].getSalary();
+                countOfEmployees++;
+                employeeNumber++;
+            }
             }
             System.out.println("----------------");
             System.out.print("Cумма затрат на зарплаты в месяц: ");
@@ -53,41 +53,42 @@ public class Main {
             System.out.printf(" %.2f\n", (summ / countOfEmployees));
             System.out.println("");
         }
-    }
 
-    private static void printMinSalary(Employee[] employees) {
-        float minSalary = employees[0].getSalary();
-        int indexEmployee = 0;
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i] != null && employees[i].getSalary() < minSalary) {
-                minSalary = employees[i].getSalary();
-                indexEmployee = i;
+
+
+        private static void printMinSalary (Employee[]employees){
+            float minSalary = employees[0].getSalary();
+            int indexEmployee = 0;
+            for (int i = 0; i < employees.length; i++) {
+                if (employees[i] != null && employees[i].getSalary() < minSalary) {
+                    minSalary = employees[i].getSalary();
+                    indexEmployee = i;
+                }
+            }
+            System.out.println("Минимальная зарплата составляет: " + minSalary);
+
+        }
+
+        private static void printMaxSalary (Employee[]employees){
+            float maxSalary = employees[0].getSalary();
+            int indexEmployee = 0;
+            for (int i = 0; i < employees.length; i++) {
+                if (employees[i] != null && employees[i].getSalary() > maxSalary) {
+                    maxSalary = employees[i].getSalary();
+                    indexEmployee = i;
+                }
+            }
+            System.out.println("________________");
+            System.out.println("Максимальная зарплата составляет: " + maxSalary);
+        }
+
+        private static void printListEmployees (Employee[]employees){
+            System.out.println("Ф.И.О. сотрудников:");
+            for (int i = 0; i < employees.length; i++) {
+                if (employees[i] != null) {
+                    System.out.println(employees[i].getFIO());
+
+                }
             }
         }
-        System.out.println("Минимальная зарплата составляет: " + minSalary);
-
     }
-
-    private static void printMaxSalary(Employee[] employees) {
-        float maxSalary = employees[0].getSalary();
-        int indexEmployee = 0;
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i] != null && employees[i].getSalary() > maxSalary) {
-                maxSalary = employees[i].getSalary();
-                indexEmployee = i;
-            }
-        }
-        System.out.println("________________");
-        System.out.println("Максимальная зарплата составляет: " + maxSalary);
-    }
-
-    private static void printListEmployees(Employee[] employees) {
-        System.out.println("Ф.И.О. сотрудников:");
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i] != null) {
-                System.out.println(employees[i].getFIO());
-
-            }
-        }
-    }
-}
